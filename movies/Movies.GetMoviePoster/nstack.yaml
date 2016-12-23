@@ -1,0 +1,29 @@
+# Service name (a combination of lower case letters, numbers, and dashes)
+name: Movies.GetMoviePoster
+
+# The language stack to use
+stack: python
+
+# Parent Image
+parent: com.nstack.python:24.0
+
+# test tuples, structs, and bytestrings
+api: |
+  type Title = Text
+  type Category = Text
+  type Score = Double
+  type MovieRecord = (Text, Text, Double)
+  type MovieRecordImage = {title: $Title, category: $Category, score: $Score, poster: [Byte]}
+  interface Default {
+    getMoviePoster : $MovieRecord -> $MovieRecordImage
+  }
+
+# (Optional) System-level packages needed
+packages: []
+
+# (Optional) Commands to run when building the service (Bash-compatible)
+commands: []
+
+# (Optional) Files/Dir to copy across into the service (can use regex/glob syntax)
+files: []
+

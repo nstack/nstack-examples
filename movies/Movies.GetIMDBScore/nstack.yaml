@@ -1,0 +1,27 @@
+# Service name (a combination of lower case letters, numbers, and dashes)
+name: Movies.GetIMDBScore
+
+# The language stack to use
+stack: python
+
+# Parent Image
+parent: com.nstack.python:24.0
+
+# test type aliases and tupling
+api: |
+  type Title = Text
+  type Category = Text
+  type MovieRecord = ($Title, $Category, Double)
+  interface Default {
+    getIMDBScore : ($Title, $Category) -> $MovieRecord
+  }
+
+# (Optional) System-level packages needed
+packages: []
+
+# (Optional) Commands to run when building the service (Bash-compatible)
+commands: []
+
+# (Optional) Files/Dir to copy across into the service (can use regex/glob syntax)
+files: []
+

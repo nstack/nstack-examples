@@ -1,0 +1,8 @@
+module Movies.Workflows {
+  // Workflow 1 - get only top movies (according to IMDB) with category and poster
+  def w1 = Movies.GetIMDBScore.getIMDBScore
+           | Movies.FilterHighScores.filterHighScores*
+           | Movies.GetMoviePoster.getMoviePoster
+           | NStack.ImageFilters.random;
+}
+

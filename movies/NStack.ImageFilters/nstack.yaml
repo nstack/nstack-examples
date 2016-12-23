@@ -1,0 +1,31 @@
+# Service name (a combination of lower case letters, numbers, and dashes)
+name: NStack.ImageFilters
+
+# The language stack to use
+stack: python
+
+# Parent Image
+parent: com.nstack.python:24.0
+
+# test IO within a service
+
+api: |
+  type MovieRecordImage = {title: Text, category: Text, score: Double, poster: [Byte]}
+  interface Default {
+    random : $MovieRecordImage -> Text,
+    gotham : $MovieRecordImage -> $MovieRecordImage,
+    kelvin : $MovieRecordImage -> $MovieRecordImage,
+    lomo : $MovieRecordImage -> $MovieRecordImage,
+    nashville : $MovieRecordImage -> $MovieRecordImage,
+    toaster : $MovieRecordImage -> $MovieRecordImage
+  }
+
+# (Optional) System-level packages needed
+packages: ["ImageMagick", "python3-pillow"]
+
+# (Optional) Commands to run when building the service (Bash-compatible)
+commands: []
+
+# (Optional) Files/Dir to copy across into the service (can use regex/glob syntax)
+files: ["frames", "imaging.py"]
+
