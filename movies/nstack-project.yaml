@@ -1,0 +1,7 @@
+# NStack Movies Example Project
+modules:
+  - Movies.GetIMDBScore
+  - Movies.GetMoviePoster
+  - Movies.FilterHighScores
+  - NStack.ImageFilters
+  - Movies.Workflows
