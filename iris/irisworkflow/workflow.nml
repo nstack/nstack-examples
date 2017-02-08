@@ -1,0 +1,6 @@
+module classifyworkflow {
+  // A sample workflow
+  def w = source(http:///s : { petalLength : Double, petalWidth : Double, sepalLength : Double, sepalWidth : Double }) | irisclassify.predict | sink(stdout:// : Text) 
+
+}
+
