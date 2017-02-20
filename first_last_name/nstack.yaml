@@ -1,0 +1,23 @@
+# Service name (a combination of lower case letters, numbers, and dots)
+name: first_last_name
+
+# The language stack to use
+stack: python
+
+# Parent Image
+parent: com.nstack.python:24.0
+
+api: |
+  interface Default {
+    full_name : Text -> Text
+  }
+
+# (Optional) System-level packages needed
+packages: []
+
+# (Optional) Commands to run when building the service (Bash-compatible)
+commands: []
+
+# (Optional) Files/Dir to copy across into the service (can use regex/glob syntax)
+files: []
+
