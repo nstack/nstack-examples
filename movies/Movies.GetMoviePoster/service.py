@@ -17,8 +17,7 @@ class Service(nstack.BaseService):
 
     # (Title, Category, Score) -> (Title, Category, Score, Image)
     def getMoviePoster(self, msg):
-        print("In getMoviePoster")
-        (title, category, rating) = msg
+        title, category, rating = msg
         x = self.imdb.search_for_title(title)[0]['imdb_id']
         y = self.imdb.get_title_by_id(x)
 
@@ -26,12 +25,10 @@ class Service(nstack.BaseService):
         wget.download(y.poster_url, out=tmp_file_name, bar=None)
         with open(tmp_file_name, "rb") as f:
             poster_data = f.read()
-            print(len(poster_data))
             with open("./img_orig_saved.jpg", "wb") as g:
               g.write(poster_data)
 
         os.remove(tmp_file_name)
 
-        print("Out getMoviePoster")
         return (title, category, rating, poster_data)
 

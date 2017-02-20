@@ -16,7 +16,7 @@ class Service(nstack.BaseService):
 
   def _processImage(self, processor, msg):
     #  type MovieRecordImage = (Text, Text, Integer, ByteString)
-    (title, category, rating, in_poster_data) = msg
+    title, category, rating, in_poster_data = msg
 
     # tmp_file_name = tempfile.mktemp(suffix=".jpg")
     tmp_file_name = "output-{}.jpg".format(self.counter)
@@ -34,10 +34,8 @@ class Service(nstack.BaseService):
     return title # out_poster_data
 
   def random(self, msg):
-    print("In imaging")
     fn = random.choice(self.random_funcs)
     x = self._processImage(fn, msg)
-    print("Out imaging")
     return x
 
   def gotham(self, msg):
