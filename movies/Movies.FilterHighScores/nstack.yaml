@@ -11,7 +11,7 @@ parent: com.nstack.python:24.0
 api: |
   type MovieRecord = (Text, Text, Double)
   interface Default {
-    filterHighScores : $MovieRecord -> [$MovieRecord]
+    filterHighScores : MovieRecord -> [MovieRecord]
   }
 
 # (Optional) System-level packages needed
