@@ -1,11 +1,11 @@
 # Service name (a combination of lower case letters, numbers, and dashes)
-name: Movies.GetIMDBScore
+name: Movies.GetIMDBScore:0.1.0
 
 # The language stack to use
 stack: python
 
 # Parent Image
-parent: com.nstack.python:24.0
+parent: NStack.Python:0.24.0
 
 # test type aliases and tupling
 api: |
