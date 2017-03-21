@@ -7,7 +7,5 @@ argument, last name from the input stream, and concatenates the two.
 Usage:
 
     nstack build
-    nstack start 'source(http:///full_name : Text) |
-      args_example.full_name { first_name = "John" } |
-      sink(log:// : Text)'
-    http PUT localhost:8080/full_name params:='"Nash"'
+    echo 'import FirstLastName:0.0.1-SNAPSHOT as FLN; Sources.http : Text { http_path = "fln" } | FLN.full_name { first_name = "John" } | Sinks.log : Text' | nstack notebook
+    http PUT localhost:8080/fln params:='"Nash"'

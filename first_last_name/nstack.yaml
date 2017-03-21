@@ -1,11 +1,11 @@
 # Service name (a combination of lower case letters, numbers, and dots)
-name: first_last_name
+name: FirstLastName:0.0.1-SNAPSHOT
 
 # The language stack to use
-stack: python
+stack: Python
 
 # Parent Image
-parent: com.nstack.python:24.0
+parent: NStack.Python:0.24.0
 
 api: |
   interface Default {
