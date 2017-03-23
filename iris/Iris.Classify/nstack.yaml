@@ -1,23 +1,23 @@
 # Service name (a combination of lower case letters, numbers, and dashes)
-name: irisclassify
+name: Iris.Classify:0.0.1-SNAPSHOT
 
 # The language stack to use
-stack: python
+stack: Python
 
 # Parent Image
-parent: com.nstack.python:24.0
+parent: NStack.Python:0.24.0
 
 api: |
   type PlantInfo = { petalLength : Double, petalWidth : Double, sepalLength : Double, sepalWidth : Double }
   type PlantSpecies = Text
  
   interface Default {
-    predict : $PlantInfo -> $PlantSpecies
+    predict : PlantInfo -> PlantSpecies
   }
 
 # (Optional) System-level packages needed
 # packages: ['python3-devel', 'make', 'automake', 'gcc-gfortran', 'redhat-rpm-config', 'subversion', 'gcc', 'gcc-c++', 'python-devel', 'scipy']
-packages: ['numpy', 'python3-scikit-learn.x86_64', 'scipy', 'python3-scikit-image.x86_64', 'python3-pandas.x86_64']
+packages: ['numpy', 'python3-scikit-learn', 'scipy', 'python3-scikit-image', 'python3-pandas']
 
 # (Optional) Commands to run when building the service (Bash-compatible)
 commands: []
