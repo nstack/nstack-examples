@@ -8,5 +8,8 @@ module Movies.Workflows:0.1.0 {
            | FilterHighScores.filterHighScores*
            | GetMoviePoster.getMoviePoster
            | ImageFilters.random;
+
+  def w2 = Sources.http<(Text, Text)> { http_path = "movies" } | w1 | Sinks.log<Text>
+
 }
 
