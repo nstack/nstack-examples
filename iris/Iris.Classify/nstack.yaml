@@ -17,7 +17,7 @@ api: |
 
 # (Optional) System-level packages needed
 # packages: ['python3-devel', 'make', 'automake', 'gcc-gfortran', 'redhat-rpm-config', 'subversion', 'gcc', 'gcc-c++', 'python-devel', 'scipy']
-packages: ['numpy', 'python3-scikit-learn.x86_64', 'scipy', 'python3-scikit-image.x86_64', 'python3-pandas.x86_64']
+packages: ['numpy', 'python3-scikit-learn', 'scipy', 'python3-scikit-image', 'python3-pandas']
 
 # (Optional) Commands to run when building the service (Bash-compatible)
 commands: []
