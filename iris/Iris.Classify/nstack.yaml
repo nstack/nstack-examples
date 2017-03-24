@@ -11,9 +11,7 @@ api: |
   type PlantInfo = { petalLength : Double, petalWidth : Double, sepalLength : Double, sepalWidth : Double }
   type PlantSpecies = Text
  
-  interface Default {
-    predict : PlantInfo -> PlantSpecies
-  }
+  predict : PlantInfo -> PlantSpecies
 
 # (Optional) System-level packages needed
 # packages: ['python3-devel', 'make', 'automake', 'gcc-gfortran', 'redhat-rpm-config', 'subversion', 'gcc', 'gcc-c++', 'python-devel', 'scipy']

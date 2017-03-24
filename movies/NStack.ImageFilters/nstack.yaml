@@ -11,14 +11,12 @@ parent: NStack.Python:0.24.0
 
 api: |
   type MovieRecordImage = {title: Text, category: Text, score: Double, poster: [Byte]}
-  interface Default {
-    random : MovieRecordImage -> Text,
-    gotham : MovieRecordImage -> MovieRecordImage,
-    kelvin : MovieRecordImage -> MovieRecordImage,
-    lomo : MovieRecordImage -> MovieRecordImage,
-    nashville : MovieRecordImage -> MovieRecordImage,
-    toaster : MovieRecordImage -> MovieRecordImage
-  }
+  random : MovieRecordImage -> Text,
+  gotham : MovieRecordImage -> MovieRecordImage,
+  kelvin : MovieRecordImage -> MovieRecordImage,
+  lomo : MovieRecordImage -> MovieRecordImage,
+  nashville : MovieRecordImage -> MovieRecordImage,
+  toaster : MovieRecordImage -> MovieRecordImage
 
 # (Optional) System-level packages needed
 packages: ["ImageMagick", "python3-pillow"]

@@ -10,9 +10,7 @@ parent: NStack.Python:0.24.0
 # test Maybe and filter
 api: |
   type MovieRecord = (Text, Text, Double)
-  interface Default {
-    filterHighScores : MovieRecord -> [MovieRecord]
-  }
+  filterHighScores : MovieRecord -> [MovieRecord]
 
 # (Optional) System-level packages needed
 packages: []

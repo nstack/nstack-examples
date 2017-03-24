@@ -8,9 +8,7 @@ stack: Python
 parent: NStack.Python:0.24.0
 
 api: |
-  interface Default {
-    classify : Text -> Text
-  }
+  classify : Text -> Text
 
 # (Optional) System-level packages needed
 packages: []
