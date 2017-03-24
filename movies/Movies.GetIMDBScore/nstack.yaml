@@ -12,9 +12,7 @@ api: |
   type Title = Text
   type Category = Text
   type MovieRecord = (Title, Category, Double)
-  interface Default {
-    getIMDBScore : (Title, Category) -> MovieRecord
-  }
+  getIMDBScore : (Title, Category) -> MovieRecord
 
 # (Optional) System-level packages needed
 packages: []

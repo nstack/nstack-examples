@@ -8,9 +8,7 @@ stack: Python
 parent: NStack.Python:0.24.0
 
 api: |
-  interface Default {
-    full_name : Text -> Text
-  }
+  full_name : Text -> Text
 
 # (Optional) System-level packages needed
 packages: []
