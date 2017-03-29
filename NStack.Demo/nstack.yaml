@@ -8,7 +8,7 @@ stack: Python
 parent: NStack.Python:0.24.0
 
 api: |
-    numChars : Text -> Integer
+  numChars : Text -> Integer
 
 # (Optional) System-level packages needed
 packages: []
