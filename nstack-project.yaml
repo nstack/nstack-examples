@@ -1,3 +1,13 @@
 # NStack Examples Project
 modules:
   - NStack.Demo
+  - classify
+  - first_last_nane
+
+  # movies
+  - Movies.GetIMDBScore
+  - Movies.GetMoviePoster
+  - Movies.FilterHighScores
+  - NStack.ImageFilters
+  - Movies.Workflows
+

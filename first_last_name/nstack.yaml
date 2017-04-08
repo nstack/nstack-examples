@@ -5,7 +5,7 @@ name: FirstLastName:0.0.1-SNAPSHOT
 stack: Python
 
 # Parent Image
-parent: NStack.Python:0.24.0
+parent: NStack.Python:0.25.0
 
 api: |
   full_name : Text -> Text

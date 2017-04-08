@@ -1,22 +1,17 @@
 # Service name (a combination of lower case letters, numbers, and dashes)
-name: NStack.ImageFilters:0.1.0
+name: NStack.ImageFilters:0.1.0-SNAPSHOT
 
 # The language stack to use
 stack: python
 
 # Parent Image
-parent: NStack.Python:0.24.0
+parent: NStack.Python:0.25.0
 
 # test IO within a service
 
 api: |
-  type MovieRecordImage = {title: Text, category: Text, score: Double, poster: [Byte]}
-  random : MovieRecordImage -> Text,
-  gotham : MovieRecordImage -> MovieRecordImage,
-  kelvin : MovieRecordImage -> MovieRecordImage,
-  lomo : MovieRecordImage -> MovieRecordImage,
-  nashville : MovieRecordImage -> MovieRecordImage,
-  toaster : MovieRecordImage -> MovieRecordImage
+  type MovieRecordImage = {title: Text, score: Double, poster: [Byte]}
+  applyFilter : MovieRecordImage -> (Text, [Byte])
 
 # (Optional) System-level packages needed
 packages: ["ImageMagick", "python3-pillow"]

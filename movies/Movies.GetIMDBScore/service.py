@@ -12,10 +12,9 @@ class Service(nstack.BaseService):
         self.imdb = Imdb()
         # self.imdb = Imdb(anonymize=True) # to proxy requests
 
-    # (Title, Category) -> MovieRecord
-    def getIMDBScore(self, msg):
-        title, category = msg
+    # Title -> MovieRecord
+    def getIMDBScore(self, title):
         x = self.imdb.search_for_title(title)[0]['imdb_id']
         y = self.imdb.get_title_by_id(x)
-        return (title, category, y.rating)
+        return (title, y.rating)
 

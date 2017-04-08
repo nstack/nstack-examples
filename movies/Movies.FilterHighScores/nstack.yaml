@@ -1,15 +1,15 @@
 # Service name (a combination of lower case letters, numbers, and dashes)
-name: Movies.FilterHighScores:0.1.0
+name: Movies.FilterHighScores:0.1.0-SNAPSHOT
 
 # The language stack to use
 stack: python
 
 # Parent Image
-parent: NStack.Python:0.24.0
+parent: NStack.Python:0.25.0
 
 # test Maybe and filter
 api: |
-  type MovieRecord = (Text, Text, Double)
+  type MovieRecord = (Text, Double)
   filterHighScores : MovieRecord -> [MovieRecord]
 
 # (Optional) System-level packages needed

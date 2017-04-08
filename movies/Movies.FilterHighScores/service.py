@@ -6,10 +6,11 @@ Movies.FilterHighScores Service
 import nstack
 
 class Service(nstack.BaseService):
-    # (Title, Category, Score) -> (Title, Category, Score)
+    # (Title, Score) -> [(Title, Score)]
     def filterHighScores(self, msg):
-        (title, category, score) = msg
-        if score >= 9: # we only want good films
+        (title, score) = msg
+        if score >= int(self.args.get('score', '9')): 
+            # we only want good films :)
             return [msg]
         else:
             return []

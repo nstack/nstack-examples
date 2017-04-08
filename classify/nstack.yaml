@@ -5,7 +5,7 @@ name: Classify:0.0.3
 stack: Python
 
 # Parent Image
-parent: NStack.Python:0.24.0
+parent: NStack.Python:0.25.0
 
 api: |
   classify : Text -> Text

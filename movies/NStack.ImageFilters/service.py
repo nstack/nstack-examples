@@ -7,49 +7,46 @@ import tempfile
 import random
 import os
 import nstack
+
 from imaging import *
 
 class Service(nstack.BaseService):
   def __init__(self):
+    # make sure call the superclass to initialise correctly
+    super().__init__()
     self.random_funcs = [mk_gotham, mk_kelvin, mk_lomo, mk_nashville, mk_toaster]
     self.counter = 0
 
+  # MovieRecordImage = (Text, Integer, ByteString) -> (Text, ByteString)
   def _processImage(self, processor, msg):
-    #  type MovieRecordImage = (Text, Text, Integer, ByteString)
-    title, category, rating, in_poster_data = msg
+    title, rating, in_poster_data = msg
 
-    # tmp_file_name = tempfile.mktemp(suffix=".jpg")
-    tmp_file_name = "output-{}.jpg".format(self.counter)
-    self.counter += 1
+    # save bytestring to disk
+    tmp_file_name = tempfile.mktemp(suffix=".jpg")
     with open(tmp_file_name, "wb") as f:
       f.write(bytearray(in_poster_data))
 
+    # apply filter
     processor(tmp_file_name)
 
+    # load modified file as bytestring
     with open(tmp_file_name, "rb") as f:
       out_poster_data = f.read()
+    os.remove(tmp_file_name)
 
-    # os.remove(tmp_file_name)
-    # return (title, category, rating, out_poster_data)
-    return title # out_poster_data
+    return (title, out_poster_data)
 
-  def random(self, msg):
-    fn = random.choice(self.random_funcs)
-    x = self._processImage(fn, msg)
-    return x
-
-  def gotham(self, msg):
-    return self._processImage(mk_gotham, msg)
-
-  def kelvin(self, msg):
-    return self._processImage(mk_kelvin, msg)
-
-  def lomo(self, msg):
-    return self._processImage(mk_lomo, msg)
-
-  def nashville(self, msg):
-    return self._processImage(mk_nashville, msg)
-
-  def toaster(self, msg):
-    return self._processImage(mk_toaster, msg)
+  def applyFilter(self, msg):
+    filters = {
+      'gotham' : mk_gotham,
+      'kelvin' : mk_kelvin,
+      'lomo' : mk_lomo,
+      'nashville' : mk_nashville,
+      'toaster' : mk_toaster,
+      'random' : random.choice(self.random_funcs)      
+    }
+    
+    filter_name = self.args.get('filtertype', 'gotham')
+    print("Applying filter {}".format(filter_name))
+    return self._processImage(filters.get(filter_name), msg)
 

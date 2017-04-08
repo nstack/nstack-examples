@@ -1,15 +1,37 @@
 module Movies.Workflows:0.1.0 {
   import Movies.GetIMDBScore:0.1.0 as GetIMDBScore;
   import Movies.FilterHighScores:0.1.0 as FilterHighScores;
-  import Movies.GetMoviePoster:0.1.0 as GetMoviePoster;
-  import NStack.ImageFilters:0.1.0 as ImageFilters;
-  // Workflow 1 - get only top movies (according to IMDB) with category and poster
-  def w1 = GetIMDBScore.getIMDBScore
-           | FilterHighScores.filterHighScores*
-           | GetMoviePoster.getMoviePoster
-           | ImageFilters.random;
+//  import Movies.GetMoviePoster:0.1.0 as GetMoviePoster;
+//  import NStack.ImageFilters:0.1.0 as ImageFilters;
+//  import NStack.Utils:0.0.1 as Utils;
 
-  def w2 = Sources.http<(Text, Text)> { http_path = "movies" } | w1 | Sinks.log<Text>
 
+  // Workflow 1 - get top movies (according to IMDB) and apply a filter to the movie poster
+  def moviePosters = Sources.http<Text> { http_path = "movies" } 
+                     | GetIMDBScore.getIMDBScore
+                     | FilterHighScores.filterHighScores* { score = "5" }
+                     | Sinks.log<Text>;
+
+/*
+  // Workflow 1 - get top movies (according to IMDB) and apply a filter to the movie poster
+  def moviePosters = GetIMDBScore.getIMDBScore
+                     | FilterHighScores.filterHighScores* { score = "9" }
+                     | GetMoviePoster.getMoviePoster
+                     | ImageFilters.filter { filter = "random" };
+
+
+  // A workflow exposing the moviePosters pipeline over http and saves the result to S3
+  def httpPosters = Sources.http<Text> { http_path = "movies" } 
+                    | moviePosters 
+                    | Utils.s3upload { bucket = "http_movies", content_type = "image/jpeg" } 
+                    | Sinks.log<Text>;
+*/  
+  // A workflow that runs the moviePosters pipeline against a database source and saves the result to S3
+/*
+  def dbPosters = Sources.postgres<Text)> { key = "movies" } 
+                  | moviePosters
+                  | Utils.s3upload { bucket = "db_movies", content_type = "image/jpeg" }
+                  | Sinks.log<Text>;
+*/
 }
 
