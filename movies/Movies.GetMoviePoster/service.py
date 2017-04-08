@@ -24,15 +24,12 @@ class Service(nstack.BaseService):
         movie_title = self.imdb.get_title_by_id(movie_id)
 
         # download the poster to a local temp file
-        # TODO - use a with
         tmp_file_name = tempfile.mktemp(suffix=".tmp")
         wget.download(movie_title.poster_url, out=tmp_file_name, bar=None)
 
         # load into a bytearray and return it
         with open(tmp_file_name, "rb") as f:
             poster_data = f.read()
-#            with open("./img_orig_saved.jpg", "wb") as g:
-#              g.write(poster_data)
 
         os.remove(tmp_file_name)
 

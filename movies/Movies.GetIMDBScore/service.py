@@ -14,7 +14,7 @@ class Service(nstack.BaseService):
 
     # Title -> MovieRecord
     def getIMDBScore(self, title):
-        x = self.imdb.search_for_title(title)[0]['imdb_id']
-        y = self.imdb.get_title_by_id(x)
-        return (title, y.rating)
+        movie_id = self.imdb.search_for_title(title)[0]['imdb_id']
+        movie_title = self.imdb.get_title_by_id(movie_id)
+        return (title, movie_title.rating)
 
