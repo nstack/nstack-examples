@@ -10,7 +10,8 @@ import nstack
 
 class Service(nstack.BaseService):
     def __init__(self):
-        super.__init__(self)
+        """Initialise and train the classifier"""
+        super.__init__()
         train = pd.read_csv("./train.csv")
         
         self.cols = ['petal_length', 'petal_width', 'sepal_length', 'sepal_width'] 
@@ -21,6 +22,7 @@ class Service(nstack.BaseService):
         self.rf.fit(train_arr, train_res) # fit the data to the algorithm
 
     def predict(self, input_row):
+        """Classify and return the particular iris based on the input values"""
         df = pd.DataFrame([input_row], columns=self.cols)
         results = self.rf.predict(df)
         return results.item()

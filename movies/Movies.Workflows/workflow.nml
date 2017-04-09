@@ -1,30 +1,29 @@
-module Movies.Workflows:0.1.0 {
-  import Movies.GetIMDBScore:0.1.0 as GetIMDBScore;
-  import Movies.FilterHighScores:0.1.0 as FilterHighScores;
-//  import Movies.GetMoviePoster:0.1.0 as GetMoviePoster;
-//  import NStack.ImageFilters:0.1.0 as ImageFilters;
-//  import NStack.Utils:0.0.1 as Utils;
+module Movies.Workflows:0.1.0-SNAPSHOT {
+  import Movies.GetIMDBScore:0.1.0-SNAPSHOT as GetIMDBScore;
+  import Movies.FilterHighScores:0.1.0-SNAPSHOT as FilterHighScores;
+  import Movies.GetMoviePoster:0.1.0-SNAPSHOT as GetMoviePoster;
+  import NStack.ImageProcess:0.1.0-SNAPSHOT as Image;
+  import NStack.Utils:0.0.1-SNAPSHOT as Utils;
 
-  // Workflow 1 - get top movies (according to IMDB) and apply a filter to the movie poster
+  // Movie workflow - get and filter top movies (according to IMDB) and apply an image filter to the movie poster
   def moviePosters = GetIMDBScore.getIMDBScore
                      | FilterHighScores.filterHighScores { score = "5" } * 
                      | GetMoviePoster.getMoviePoster
-                     | ImageFilters.applyFilter { filtertype = "random" }
-                     | Sinks.log<(Text, [Byte])>;
+                     | Image.applyFilter { filtertype = "random" }
 
   // A workflow exposing the moviePosters pipeline over http and saves the result to S3
-/*
-
   def httpPosters = Sources.http<Text> { http_path = "movies" } 
                     | moviePosters 
-                    | Utils.s3upload { bucket = "http_movies", content_type = "image/jpeg" } 
+                    | Utils.uploadS3file { bucket = "http_movies", content_type = "image/jpeg" } 
                     | Sinks.log<Text>;
   
-  // A workflow that runs the moviePosters pipeline against a database source and saves the result to S3
-  def dbPosters = Sources.postgres<Text)> { key = "movies" } 
+  // A workflow that runs the moviePosters pipeline against a random selection of movies from a database source and saves the result to S3
+  def dbPosters = Sources.postgres<Text>
+                  { pg_host = "db-demo-nstack-com.cesfchmoenn4.us-east-1.rds.amazonaws.com", 
+                    pg_port = "5432", pg_user = "demo", pg_password = "demo", pg_database = "demo",
+                    pg_query = "SELECT title FROM film ORDER BY RANDOM() LIMIT 20;" }
                   | moviePosters
-                  | Utils.s3upload { bucket = "db_movies", content_type = "image/jpeg" }
+                  | Utils.uploadS3file { bucket = "db_movies", content_type = "image/jpeg" }
                   | Sinks.log<Text>;
-*/
 }
 

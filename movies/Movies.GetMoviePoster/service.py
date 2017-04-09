@@ -15,9 +15,9 @@ class Service(nstack.BaseService):
         self.imdb = Imdb()
         # self.imdb = Imdb(anonymize=True) # to proxy requests
 
-    # (Title, Score) -> (Title, Score, Image)
+    # (Title, Score) -> (Title, Image)
     def getMoviePoster(self, msg):
-        title, rating = msg
+        title, _ = msg
 
         # get the movie title
         movie_id = self.imdb.search_for_title(title)[0]['imdb_id']
@@ -33,5 +33,5 @@ class Service(nstack.BaseService):
 
         os.remove(tmp_file_name)
 
-        return (title, rating, poster_data)
+        return ('{}.jpg'.format(title), poster_data)
 

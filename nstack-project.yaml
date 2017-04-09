@@ -1,16 +1,20 @@
-# NStack Examples Project
+# NStack Examples Project File
 modules:
   - NStack.Demo
   - classify
   - first_last_nane
 
+  # stdlib
+  - NStack.Utils
+  - NStack.ImageFilters
+
   # movies
   - movies/Movies.GetIMDBScore
   - movies/Movies.GetMoviePoster
   - movies/Movies.FilterHighScores
-  - movies/NStack.ImageFilters
   - movies/Movies.Workflows
 
   # iris
   - iris/Iris.Classify
   - iris/Iris.Workflow
+

@@ -12,8 +12,8 @@ api: |
   type Title = Text
   type Score = Double
   type MovieRecord = (Text, Double)
-  type MovieRecordImage = {title: Title, score: Score, poster: [Byte]}
-  getMoviePoster : MovieRecord -> MovieRecordImage
+  type MovieImage = {title: Title, poster: [Byte]}
+  getMoviePoster : MovieRecord -> MovieImage
 
 # (Optional) System-level packages needed
 packages: []

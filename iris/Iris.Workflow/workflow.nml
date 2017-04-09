@@ -1,7 +1,16 @@
 module Iris.Workflow:0.0.1-SNAPSHOT {
   import Iris.Classify:0.0.1-SNAPSHOT as C;
 
-  def w = Sources.http<{petalLength: Double, petalWidth : Double, sepalLength : Double, sepalWidth : Double}> { http_path = "iris" } 
-          | C.predict 
-          | Sinks.log<Text>;
+  def fromHttp = Sources.http<{petalLength: Double, petalWidth : Double, 
+                               sepalLength : Double, sepalWidth : Double}> { http_path = "/iris" }
+                 | C.predict 
+                 | Sinks.log<Text>;
+
+  def fromDb = Sources.postgres<{petalLength: Double, petalWidth : Double,
+                                 sepalLength : Double, sepalWidth : Double}> 
+               { pg_host = "db-demo-nstack-com.cesfchmoenn4.us-east-1.rds.amazonaws.com", 
+                 pg_port = "5432", pg_user = "demo", pg_password = "demo", pg_database = "demo",
+                 pg_query = "SELECT * FROM iris;" }
+               | C.predict 
+               | Sinks.log<Text>;
 }

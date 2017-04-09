@@ -1,5 +1,5 @@
 # Service name (a combination of lower case letters, numbers, and dashes)
-name: NStack.ImageFilters:0.1.0-SNAPSHOT
+name: NStack.ImageProcess:0.1.0-SNAPSHOT
 
 # The language stack to use
 stack: python
@@ -7,11 +7,9 @@ stack: python
 # Parent Image
 parent: NStack.Python:0.25.0
 
-# test IO within a service
-
 api: |
-  type MovieRecordImage = {title: Text, score: Double, poster: [Byte]}
-  applyFilter : MovieRecordImage -> (Text, [Byte])
+  type Image = {title: Text, data: [Byte]}
+  applyFilter : Image -> Image
 
 # (Optional) System-level packages needed
 packages: ["ImageMagick", "python3-pillow"]

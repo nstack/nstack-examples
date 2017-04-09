@@ -3,5 +3,4 @@ modules:
   - Movies.GetIMDBScore
   - Movies.FilterHighScores
   - Movies.GetMoviePoster
-  - NStack.ImageFilters
-#  - Movies.Workflows
+  - Movies.Workflows

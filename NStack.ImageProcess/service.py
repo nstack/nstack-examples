@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-NStack.ImageFilters Service
+NStack.ImageProcess Service
 """
 import tempfile
 import random
@@ -17,9 +17,9 @@ class Service(nstack.BaseService):
     self.random_funcs = [mk_gotham, mk_kelvin, mk_lomo, mk_nashville, mk_toaster]
     self.counter = 0
 
-  # MovieRecordImage = (Text, Integer, ByteString) -> (Text, ByteString)
+  # (Text, ByteString) -> (Text, ByteString)
   def _processImage(self, processor, msg):
-    title, rating, in_poster_data = msg
+    title, in_poster_data = msg
 
     # save bytestring to disk
     tmp_file_name = tempfile.mktemp(suffix=".jpg")

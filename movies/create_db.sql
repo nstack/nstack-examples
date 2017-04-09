@@ -1,5 +1,4 @@
-﻿-- Database: movies
-
+﻿-- Database: nstack
 CREATE SEQUENCE category_id_seq;
 CREATE SEQUENCE film_id_seq;
 CREATE SEQUENCE output_id_seq;
