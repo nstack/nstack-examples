@@ -1,7 +1,7 @@
 module Iris.Workflow:0.0.1-SNAPSHOT {
-  // A sample workflow
-  import Iris.Classify:0.0.1-SNAPSHOT as C
-  def w = Sources.http<{petalLength: Double, petalWidth : Double, sepalLength : Double, sepalWidth : Double}> { http_path = "s" } | C.predict | Sinks.log<Text>
+  import Iris.Classify:0.0.1-SNAPSHOT as C;
 
+  def w = Sources.http<{petalLength: Double, petalWidth : Double, sepalLength : Double, sepalWidth : Double}> { http_path = "iris" } 
+          | C.predict 
+          | Sinks.log<Text>;
 }
-

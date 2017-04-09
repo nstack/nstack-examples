@@ -5,9 +5,12 @@ modules:
   - first_last_nane
 
   # movies
-  - Movies.GetIMDBScore
-  - Movies.GetMoviePoster
-  - Movies.FilterHighScores
-  - NStack.ImageFilters
-  - Movies.Workflows
+  - movies/Movies.GetIMDBScore
+  - movies/Movies.GetMoviePoster
+  - movies/Movies.FilterHighScores
+  - movies/NStack.ImageFilters
+  - movies/Movies.Workflows
 
+  # iris
+  - iris/Iris.Classify
+  - iris/Iris.Workflow
