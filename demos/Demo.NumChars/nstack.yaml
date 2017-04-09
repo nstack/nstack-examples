@@ -1,5 +1,5 @@
 # Module name (must be capitalised)
-name: NStack.Demo:0.0.1
+name: Demo.NumChars:0.0.1
 
 # The language stack to use
 stack: Python

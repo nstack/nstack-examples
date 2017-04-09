@@ -1,12 +1,14 @@
 # NStack Examples Project File
 modules:
-  - NStack.Demo
-  - classify
-  - first_last_nane
+  # demos
+  - demos/Demo.NumChars
+  - demos/Demo.Workflow
+  - demos/Demo.Classify
+  - demos/Demo.FirstLastName
 
-  # stdlib
-  - NStack.Utils
-  - NStack.ImageProcess
+  # NStack stdlib
+  - utils/NStack.Utils
+  - utils/NStack.ImageProcess
 
   # movies
   - movies/Movies.GetIMDBScore

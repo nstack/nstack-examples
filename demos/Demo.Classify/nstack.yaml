@@ -1,5 +1,5 @@
 # Module name (must be capitalised)
-name: Classify:0.0.3
+name: Demo.Classify:0.0.3
 
 # The language stack to use
 stack: Python

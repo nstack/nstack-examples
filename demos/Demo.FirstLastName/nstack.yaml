@@ -1,5 +1,5 @@
 # Service name (a combination of lower case letters, numbers, and dots)
-name: FirstLastName:0.0.1-SNAPSHOT
+name: Demo.FirstLastName:0.0.1
 
 # The language stack to use
 stack: Python
