@@ -11,7 +11,7 @@ import nstack
 class Service(nstack.BaseService):
     def __init__(self):
         """Initialise and train the classifier"""
-        super.__init__()
+        super().__init__()
         train = pd.read_csv("./train.csv")
         
         self.cols = ['petal_length', 'petal_width', 'sepal_length', 'sepal_width'] 

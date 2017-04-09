@@ -18,7 +18,7 @@ module Movies.Workflows:0.1.0-SNAPSHOT {
                     | Sinks.log<Text>;
   
   // A workflow that runs the moviePosters pipeline against a random selection of movies from a database source and saves the result to S3
-  def dbPosters = Sources.postgres<Text>
+  def dbPosters = Sources.postgresql<Text>
                   { pg_host = "db-demo-nstack-com.cesfchmoenn4.us-east-1.rds.amazonaws.com", 
                     pg_port = "5432", pg_user = "demo", pg_password = "demo", pg_database = "demo",
                     pg_query = "SELECT title FROM film ORDER BY RANDOM() LIMIT 20;" }
