@@ -1,2 +1,2 @@
-tinys3
+boto3
 

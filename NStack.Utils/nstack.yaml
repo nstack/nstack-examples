@@ -9,8 +9,9 @@ parent: nstack/NStack.Python:0.25.0
 
 api: |
   type URL = Text
-  uploadS3Uuid : [Byte] -> URL
-  uploadS3File : (Text, [Byte]) -> URL
+  uploadS3Uuid : [Byte] -> URL,
+  uploadS3File : (Text, [Byte]) -> URL,
+  uploadTest : Text -> URL
 
 # (Optional) System-level packages needed
 packages: []
@@ -19,5 +20,5 @@ packages: []
 commands: []
 
 # (Optional) Files/Dir to copy across into the service (can use regex/glob syntax)
-files: []
+files: ['credentials.json']
 
