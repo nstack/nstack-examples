@@ -6,7 +6,7 @@ modules:
 
   # stdlib
   - NStack.Utils
-  - NStack.ImageFilters
+  - NStack.ImageProcess
 
   # movies
   - movies/Movies.GetIMDBScore

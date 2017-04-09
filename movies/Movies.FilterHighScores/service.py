@@ -9,7 +9,7 @@ class Service(nstack.BaseService):
     # (Title, Score) -> [(Title, Score)]
     def filterHighScores(self, msg):
         (title, score) = msg
-        if score >= int(self.args.get('score', '9')): 
+        if score >= float(self.args.get('score', '8')): 
             # we only want good films :)
             return [msg]
         else:
