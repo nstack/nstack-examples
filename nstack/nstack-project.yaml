@@ -1,0 +1,5 @@
+# NStack StdLib Project File
+modules:
+  - NStack.Utils
+  - NStack.ImageProcess
+
