@@ -5,7 +5,9 @@ NStack.Utils:0.0.1-SNAPSHOT Service
 """
 import io
 import json
+import mimetypes
 import uuid
+
 import boto3
 
 import nstack
@@ -24,7 +26,8 @@ class Service(nstack.BaseService):
   def _upload(self, upload_name, data, content_type=None):
     upload_name = "{}/{}".format(self.args.get('directory', 'default'), upload_name)
 
-    self.s3.upload_fileobj(data, 'uploads.demo.nstack.com', upload_name)
+    content_type = 'application/octet-stream' if content_type is None else content_type
+    self.s3.upload_fileobj(data, 'uploads.demo.nstack.com', upload_name, ExtraArgs={'ContentType': content_type})
 
     upload_url = 'http://uploads.demo.nstack.com.s3.amazonaws.com/{}'.format(upload_name)
     print("Uploaded to {}".format(upload_url))
@@ -32,16 +35,15 @@ class Service(nstack.BaseService):
 
   def uploadS3Uuid(self, data):
     """Upload object to S3, creating a unique name on demand"""
-    content_type=self.args.get('content_type', 'application/octet-stream')
-    return self._upload(uuid.uuid4(), io.BytesIO(data), content_type)
+    return self._upload(uuid.uuid4(), io.BytesIO(data), self.args.get('content_type', None))
 
   def uploadS3File(self, msg):
     """Upload object to S3, using the given string as the object name"""
     title, data = msg
-    return self._upload(title, io.BytesIO(data))
+    return self._upload(title, io.BytesIO(data), mimetypes.guess_type(title))
 
   def uploadTest(self, title):
     """Upload object to S3, using the given string as the object name"""
     f = open(title, 'rb')
-    return self._upload(title, f)
+    return self._upload(title, f, mimetypes.guess_type(title))
 
