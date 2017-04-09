@@ -23,7 +23,7 @@ A collection of basic example services that demonstrate,
 A set of services that provide basic functionality for use in more complex workflows
 
 | *Name* | *Usage* |
-|------------------|
+|--------|---------|
 | `NStack.Utils` | General purpose utilities, e.g. uploading to files to S3 |
 | `NStack.ImageProcessing` | Methods to process images, e.g. filters, resize, etc. |
 
