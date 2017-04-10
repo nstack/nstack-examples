@@ -1,5 +1,5 @@
-module Iris.Workflow:0.0.1-SNAPSHOT {
-  import Iris.Classify:0.0.1-SNAPSHOT as C;
+module Iris.Workflow:0.1.0 {
+  import Iris.Classify:0.1.0 as C;
 
   def fromHttp = Sources.http<(Double, Double, Double, Double)> { http_path = "/iris" }
                  | C.predict 

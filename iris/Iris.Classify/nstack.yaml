@@ -1,5 +1,5 @@
 # Service name (a combination of lower case letters, numbers, and dashes)
-name: Iris.Classify:0.0.1-SNAPSHOT
+name: Iris.Classify:0.1.0
 
 # The language stack to use
 stack: Python

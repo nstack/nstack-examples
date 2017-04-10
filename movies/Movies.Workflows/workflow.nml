@@ -1,9 +1,9 @@
-module Movies.Workflows:0.1.0-SNAPSHOT {
-  import Movies.GetIMDBScore:0.1.0-SNAPSHOT as GetIMDBScore;
-  import Movies.FilterHighScores:0.1.0-SNAPSHOT as FilterHighScores;
-  import Movies.GetMoviePoster:0.1.0-SNAPSHOT as GetMoviePoster;
-  import NStack.ImageProcess:0.1.0-SNAPSHOT as Image;
-  import NStack.Utils:0.1.0-SNAPSHOT as Utils;
+module Movies.Workflows:0.1.0 {
+  import Movies.GetIMDBScore:0.1.0 as GetIMDBScore;
+  import Movies.FilterHighScores:0.1.0 as FilterHighScores;
+  import Movies.GetMoviePoster:0.1.0 as GetMoviePoster;
+  import NStack.ImageProcess:0.1.0 as Image;
+  import NStack.Utils:0.1.0 as Utils;
 
   // Movie workflow - get and filter top movies (according to IMDB) and apply an image filter to the movie poster
   def moviePosters = GetIMDBScore.getIMDBScore
