@@ -12,13 +12,13 @@ module Movies.Workflows:0.1.0 {
                      | Image.applyFilter { filtertype = "gotham" };
 
   // A workflow exposing the moviePosters pipeline over http and saves the result to S3
-  def httpPosters = Sources.http<Text> { http_path = "movies" } 
+  def fromHttp = Sources.http<Text> { http_path = "movies" } 
                     | moviePosters 
                     | Utils.uploadS3File { directory = "http_movies" }
                     | Sinks.log<Text>;
   
   // A workflow that runs the moviePosters pipeline against a random selection of movies from a database source and saves the result to S3
-  def dbPosters = Sources.postgresql<(Text, Text)>
+  def fromDb = Sources.postgresql<(Text, Text)>
                   { pg_host = "db-demo-nstack-com.cesfchmoenn4.us-east-1.rds.amazonaws.com", 
                     pg_port = "5432", pg_user = "demo", pg_password = "demo", pg_database = "demo",
                     pg_query = "SELECT title, title FROM film ORDER BY RANDOM() LIMIT 10;" }
