@@ -2,9 +2,11 @@
 
 A selection of examples we use to test `nstack` and demonstrate features - these are installed by default on our demo server at demo.nstack.com
 
+See the [main repo](https://www.github.com/nstack/nstack) for more information, or check out the [full documentation](https://docs.nstack.com).
+
 ## Installing
 
-Simply git clone the repo and run `nstack build` from the project root directory
+Clone the repo and run `nstack build` from the project root directory
 
 # Examples
 
