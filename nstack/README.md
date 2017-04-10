@@ -6,10 +6,11 @@ A collection of useful modules and functions to import and use within in your ow
 
 Basic utility functions, including,
 
-| *Name* | *Usage* |
-|--------|---------|
-| ```uploadS3File : { title : Text, data : [Byte]} -> Text``` | Upload a data to an S3 bucket with the given title and return the URL |
-| ```uploadS3Uuid : [Byte] -> Text``` | Upload a data to an S3 bucket with a unique name and return the URL |
+
+* ```uploadS3File : { title : Text, data : [Byte]} -> Text``` 
+  * Upload a data to an S3 bucket with the given title and return the URL
+* ```uploadS3Uuid : [Byte] -> Text```
+  * Upload a data to an S3 bucket with a unique name and return the URL
 
 #### Usage
 
@@ -28,8 +29,7 @@ Build the service using `nstack build`. Note, you will need a drop a file in the
 A collection of methods for processing streams of images, including applying filters, etc.
 
 
-| *Name* | *Usage* |
-|--------|---------|
-| ```applyFilter { filterType } : { title : Text, data : [Byte]} -> { title : Text, data : [Byte]}``` | Apply a filter to an incoming data element and return the modified image. The specific filter is configured by setting the variable `filterType` within a workflow to one of 'gotham', 'kelvin', 'lomo', 'nashville', 'toaster', or 'random' |
+* ```applyFilter { filterType } : { title : Text, data : [Byte]} -> { title : Text, data : [Byte]}```
+  * Apply a filter to an incoming data element and return the modified image. The specific filter is configured by setting the variable `filterType` within a workflow to one of 'gotham', 'kelvin', 'lomo', 'nashville', 'toaster', or 'random' |
 
 
