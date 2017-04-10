@@ -63,12 +63,12 @@ This is a little example demonstrating the environmental configuration feature,
 It is a module that takes the first name via the a static configuration
 argument, last name from the input stream, and concatenates the two.
 
-As mentioned above, this example demonstrates piping input into the `nstack notebook` command to start an ad-hoc workflow
+As mentioned above, this example demonstrates piping input into the `nstack notebook` command to start an ad-hoc workflow,
 
 ```bash
 $ cd Demo.FirstLastName
 $ nstack build
-$ echo 'import FirstLastName:0.0.1-SNAPSHOT as FLN; Sources.http<Text> { http_path = "fln" } | FLN.full_name { first_name = "John" } | Sinks.log<Text>' | nstack notebook
+$ echo 'import FirstLastName:0.0.1-SNAPSHOT as FLN; Sources.http<Text> { http_path = "/fln" } | FLN.full_name { first_name = "John" } | Sinks.log<Text>' | nstack notebook
 > Service started successfully as process 5
 $ nstack send "/fln" '"Nash"'
 ```
