@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-NStack.Utils:0.0.1-SNAPSHOT Service
+NStack.Utils:0.1.0 Service
 """
 import io
 import json

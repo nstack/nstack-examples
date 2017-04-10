@@ -1,5 +1,5 @@
 # Module name (must be capitalised)
-name: NStack.Utils:0.1.0-SNAPSHOT
+name: NStack.Utils:0.1.0
 
 # The language stack to use
 stack: Python

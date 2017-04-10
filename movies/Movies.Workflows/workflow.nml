@@ -9,7 +9,7 @@ module Movies.Workflows:0.1.0 {
   def moviePosters = GetIMDBScore.getIMDBScore
                      | FilterHighScores.filterHighScores { score = "7.5" } * 
                      | GetMoviePoster.getMoviePoster
-                     | Image.applyFilter { filtertype = "random" };
+                     | Image.applyFilter { filtertype = "gotham" };
 
   // A workflow exposing the moviePosters pipeline over http and saves the result to S3
   def httpPosters = Sources.http<Text> { http_path = "movies" } 

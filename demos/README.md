@@ -68,7 +68,7 @@ As mentioned above, this example demonstrates piping input into the `nstack note
 ```bash
 $ cd Demo.FirstLastName
 $ nstack build
-$ echo 'import FirstLastName:0.0.1-SNAPSHOT as FLN; Sources.http<Text> { http_path = "/fln" } | FLN.full_name { first_name = "John" } | Sinks.log<Text>' | nstack notebook
+$ echo 'import FirstLastName:0.0.1 as FLN; Sources.http<Text> { http_path = "/fln" } | FLN.full_name { first_name = "John" } | Sinks.log<Text>' | nstack notebook
 > Service started successfully as process 5
 $ nstack send "/fln" '"Nash"'
 ```
