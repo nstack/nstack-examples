@@ -1,6 +1,7 @@
 # NStack Demos Project File
 modules:
   - Demo.NumChars
+  - Demo.DigitString
   - Demo.Workflow
   - Demo.Classify
   - Demo.FirstLastName

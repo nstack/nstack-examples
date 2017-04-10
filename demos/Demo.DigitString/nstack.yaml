@@ -1,0 +1,21 @@
+# Module name (must be capitalised)
+name: Demo.DigitString:0.0.1-SNAPSHOT
+
+# The language stack to use
+stack: Python
+
+# Parent Image
+parent: NStack.Python:0.24.0
+
+api: |
+  digitString : [Integer] -> Text
+
+# (Optional) System-level packages needed
+packages: []
+
+# (Optional) Commands to run when building the service (Bash-compatible)
+commands: []
+
+# (Optional) Files/Dir to copy across into the service (can use regex/glob syntax)
+files: []
+

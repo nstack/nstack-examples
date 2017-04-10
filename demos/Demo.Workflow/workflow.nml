@@ -1,5 +1,7 @@
-module Demo.Workflow:0.0.1 {
+module Demo.Workflow:0.0.1-SNAPSHOT {
   import Demo.NumChars:0.0.1 as D;
+  import Demo.DigitString:0.0.1-SNAPSHOT as DigitString;
   // A sample workflow
   def w = Sources.http<Text> { http_path = "/demo" } | D.numChars | Sinks.log<Integer>;
+  def digits = Sources.http<[Integer]> { http_path = "/digit_string" } | DigitString.digitString | Sinks.log<Text>
 }
