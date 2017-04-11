@@ -1,5 +1,5 @@
 module Movies.Workflows:0.1.1 {
-  import Movies.GetIMDBScore:0.1.0 as GetIMDBScore;
+  import Movies.GetIMDBScore:0.1.1 as GetIMDBScore;
   import Movies.FilterHighScores:0.1.0 as FilterHighScores;
   import Movies.GetMoviePoster:0.1.1 as GetMoviePoster;
   import NStack.ImageProcess:0.1.0 as Image;
