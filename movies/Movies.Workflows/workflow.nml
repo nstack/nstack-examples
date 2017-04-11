@@ -1,4 +1,4 @@
-module Movies.Workflows:0.1.0 {
+module Movies.Workflows:0.1.1 {
   import Movies.GetIMDBScore:0.1.0 as GetIMDBScore;
   import Movies.FilterHighScores:0.1.0 as FilterHighScores;
   import Movies.GetMoviePoster:0.1.1 as GetMoviePoster;
@@ -21,7 +21,7 @@ module Movies.Workflows:0.1.0 {
   def fromDb = Sources.postgresql<(Text, Text)>
                   { pg_host = "db-demo-nstack-com.cesfchmoenn4.us-east-1.rds.amazonaws.com", 
                     pg_port = "5432", pg_user = "demo", pg_password = "demo", pg_database = "demo",
-                    pg_query = "SELECT title, title FROM film ORDER BY RANDOM() LIMIT 5;" }
+                    pg_query = "SELECT title, title FROM film ORDER BY RANDOM() LIMIT 15;" }
                   | Utils.fst
                   | moviePosters
                   | Utils.uploadS3File { directory = "db_movies" }
