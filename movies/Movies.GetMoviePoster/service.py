@@ -6,16 +6,18 @@ Movies.GetMoviePoster Service
 import tempfile
 import os
 from imdbpie import Imdb
-import wget
+import requests
 
 import nstack
+
+MAX_SIZE_KB = 512 # Max size of a poster to return
 
 class Service(nstack.BaseService):
     def __init__(self):
         self.imdb = Imdb()
         # self.imdb = Imdb(anonymize=True) # to proxy requests
 
-    # (Title, Score) -> (Title, Image)
+    # (Title, Score) -> [(Title, Image)]
     def getMoviePoster(self, msg):
         title, _ = msg
 
@@ -23,15 +25,13 @@ class Service(nstack.BaseService):
         movie_id = self.imdb.search_for_title(title)[0]['imdb_id']
         movie_title = self.imdb.get_title_by_id(movie_id)
 
-        # download the poster to a local temp file
-        tmp_file_name = tempfile.mktemp(suffix=".tmp")
-        wget.download(movie_title.poster_url, out=tmp_file_name, bar=None)
+        if movie_title.poster_url is not None:
+          # download the poster into a bytearray
+          r = requests.get(movie_title.poster_url)
 
-        # load into a bytearray and return it
-        with open(tmp_file_name, "rb") as f:
-            poster_data = f.read()
+          # filter content greater than MAX_SIZE_KB
+          if len(r.content) <= MAX_SIZE_KB * 1000:
+            return [('{}.jpg'.format(title), r.content)]
 
-        os.remove(tmp_file_name)
-
-        return ('{}.jpg'.format(title), poster_data)
+        return []
 
