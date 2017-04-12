@@ -25,7 +25,7 @@ def movies = GetIMDBScore.getIMDBScore | FilterHighScores.filterHighScores* | Ge
 
 ```bash
 $ nstack build # depends on common modules found in ../nstack
-$ nstack start Movies.Workflows:0.1.0.httpPosters
+$ nstack start Movies.Workflows:0.1.2.fromHttp
 > Successfully started as process 5
 $ nstack send "/movies" '"Toy Story"'
 $ nstack log 5
@@ -35,7 +35,7 @@ $ nstack log 5
 
 ```bash
 $ nstack build # depends on common modules found in ../nstack
-$ nstack start Movies.Workflows:0.1.0.dbPosters
+$ nstack start Movies.Workflows:0.1.2.fromDb
 > Successfully started as process 5
 $ nstack log 5
 ```
