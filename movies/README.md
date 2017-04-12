@@ -16,7 +16,10 @@ GetIMDBScore.getIMDBScore : Title -> MovieRecord
 FilterHighScores.filterHighScores : MovieRecord -> [MovieRecord]
 GetMoviePoster.getMoviePoster : MovieRecord -> MovieImage
 
-def movies = GetIMDBScore.getIMDBScore | FilterHighScores.filterHighScores* | GetMoviePoster.getMoviePoster
+def moviePosters = GetIMDBScore.getIMDBScore
+                   | FilterHighScores.filterHighScores { score = "7.5" } * 
+                   | GetMoviePoster.getMoviePoster *
+                   | Image.applyFilter { filtertype = "random" };
 ```
 
 ### Usage
