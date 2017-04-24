@@ -1,0 +1,3 @@
+module Demo.Classify:0.0.3
+
+fun classify : Text -> Text

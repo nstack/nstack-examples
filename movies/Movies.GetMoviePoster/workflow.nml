@@ -1,0 +1,5 @@
+module Movies.GetMoviePoster:0.1.0
+
+import Movies.Types:0.1.0 as Types
+
+fun getMoviePoster : Types.MovieRecord -> [Types.MovieImage]

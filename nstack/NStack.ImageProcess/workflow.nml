@@ -1,0 +1,5 @@
+module NStack.ImageProcess:0.1.0
+
+type Image = {title: Text, data: [Byte]}
+
+fun applyFilter : Image -> Image

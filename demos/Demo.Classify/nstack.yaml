@@ -1,14 +1,8 @@
-# Module name (must be capitalised)
-name: Demo.Classify:0.0.3
-
 # The language stack to use
 stack: Python
 
 # Parent Image
 parent: NStack.Python:0.25.0
-
-api: |
-  classify : Text -> Text
 
 # (Optional) System-level packages needed
 packages: []

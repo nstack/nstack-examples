@@ -1,0 +1,3 @@
+module Demo.NumChars:0.0.1
+
+fun numChars : Text -> Integer

@@ -10,7 +10,7 @@ This partial workflow of type `Text -> MovieImage` is then reused to create spec
 ```haskell
 type Title = Text
 type MovieRecord = (Text, Double)
-type MovieImage = {title: Text, data: [Byte]}
+type MovieImage = {title: Title, data: [Byte]}
 
 GetIMDBScore.getIMDBScore : Title -> MovieRecord
 FilterHighScores.filterHighScores : MovieRecord -> [MovieRecord]
@@ -28,7 +28,7 @@ def moviePosters = GetIMDBScore.getIMDBScore
 
 ```bash
 $ nstack build # depends on common modules found in ../nstack
-$ nstack start Movies.Workflows:0.1.2.fromHttp
+$ nstack start Movies.Workflows:0.1.0.fromHttp
 > Successfully started as process 5
 $ nstack send "/movies" '"Toy Story"'
 $ nstack log 5
@@ -38,7 +38,7 @@ $ nstack log 5
 
 ```bash
 $ nstack build # depends on common modules found in ../nstack
-$ nstack start Movies.Workflows:0.1.2.fromDb
+$ nstack start Movies.Workflows:0.1.0.fromDb
 > Successfully started as process 5
 $ nstack log 5
 ```

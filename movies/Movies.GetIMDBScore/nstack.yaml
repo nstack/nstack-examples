@@ -1,17 +1,8 @@
-# Service name (a combination of lower case letters, numbers, and dashes)
-name: Movies.GetIMDBScore:0.1.1
-
 # The language stack to use
 stack: python
 
 # Parent Image
 parent: NStack.Python:0.25.0
-
-# test type aliases and tupling
-api: |
-  type Title = Text
-  type MovieRecord = (Title, Double)
-  getIMDBScore : Title -> MovieRecord
 
 # (Optional) System-level packages needed
 packages: []

@@ -12,7 +12,7 @@ type PlantSpecies = Text
 predict : PlantInfo -> PlantSpecies
 ```
 
-This service is used within `Classify.Workflow` to create specific workflows that expose it over http and wire it up to a Postgres database containing sample data to classify.
+This service is used to create specific workflows that expose it over http and wire it up to a Postgres database containing sample data to classify.
 
 ### Usage
 
@@ -20,7 +20,7 @@ This service is used within `Classify.Workflow` to create specific workflows tha
 
 ```bash
 $ nstack build
-$ nstack start Iris.Workflows:0.1.0.fromHttp
+$ nstack start Iris.Classify:0.1.0.fromHttp
 > Successfully started as process 5
 $ nstack send "/iris" '[1.5, 0.1, 4.9, 3.1]'
 $ nstack log 5
@@ -32,7 +32,7 @@ $ nstack log 5
 
 ```bash
 $ nstack build
-$ nstack start Iris.Workflows:0.1.0.fromDb
+$ nstack start Iris.Classify:0.1.0.fromDb
 > Successfully started as process 5
 $ nstack log 5
 ```

@@ -1,0 +1,6 @@
+module Movies.Types:0.1.0
+
+type Title = Text
+type Score = Double
+type MovieRecord = (Title, Score)
+type MovieImage = {title: Title, data: [Byte]}

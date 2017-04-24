@@ -1,0 +1,3 @@
+module Demo.DigitString:0.0.1-SNAPSHOT
+
+fun digitString : [Integer] -> Text

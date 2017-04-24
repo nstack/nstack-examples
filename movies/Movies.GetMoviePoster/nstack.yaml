@@ -1,19 +1,8 @@
-# Service name (a combination of lower case letters, numbers, and dashes)
-name: Movies.GetMoviePoster:0.1.1
-
 # The language stack to use
 stack: python
 
 # Parent Image
 parent: NStack.Python:0.25.0
-
-# test tuples, structs, and bytestrings
-api: |
-  type Title = Text
-  type Score = Double
-  type MovieRecord = (Text, Double)
-  type MovieImage = {title: Title, data: [Byte]}
-  getMoviePoster : MovieRecord -> [MovieImage]
 
 # (Optional) System-level packages needed
 packages: []

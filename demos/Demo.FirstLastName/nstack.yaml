@@ -1,14 +1,8 @@
-# Service name (a combination of lower case letters, numbers, and dots)
-name: Demo.FirstLastName:0.0.1
-
 # The language stack to use
 stack: Python
 
 # Parent Image
 parent: NStack.Python:0.25.0
-
-api: |
-  full_name : Text -> Text
 
 # (Optional) System-level packages needed
 packages: []

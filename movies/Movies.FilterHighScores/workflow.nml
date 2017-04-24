@@ -1,0 +1,5 @@
+module Movies.FilterHighScores:0.1.0
+
+import Movies.Types:0.1.0 as Types
+
+fun filterHighScores : Types.MovieRecord -> [Types.MovieRecord]

@@ -1,0 +1,9 @@
+module NStack.Utils:0.1.0
+
+type URL = Text
+
+fun uploadS3Uuid : [Byte] -> URL
+fun uploadS3File : {title: Text, data: [Byte]} -> URL
+fun uploadTest : Text -> URL
+fun fst : (Text, Text) -> Text
+fun snd : (Text, Text) -> Text

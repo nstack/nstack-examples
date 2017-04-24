@@ -1,3 +1,2 @@
 modules:
   - Iris.Classify
-  - Iris.Workflow

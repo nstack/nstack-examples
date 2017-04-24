@@ -1,14 +1,8 @@
-# Module name (must be capitalised)
-name: Demo.DigitString:0.0.1-SNAPSHOT
-
 # The language stack to use
 stack: Python
 
 # Parent Image
-parent: NStack.Python:0.24.0
-
-api: |
-  digitString : [Integer] -> Text
+parent: NStack.Python:0.25.0
 
 # (Optional) System-level packages needed
 packages: []

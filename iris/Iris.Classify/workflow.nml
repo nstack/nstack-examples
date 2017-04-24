@@ -1,0 +1,17 @@
+module Iris.Classify:0.1.0
+
+type PlantInfo = (Double, Double, Double, Double)
+type PlantSpecies = Text
+
+fun predict : PlantInfo -> PlantSpecies
+
+def fromHttp = Sources.http<PlantInfo> { http_path = "/iris" }
+               | predict
+               | Sinks.log<PlantSpecies>
+
+def fromDb = Sources.postgresql<PlantInfo>
+             { pg_host = "db-demo-nstack-com.cesfchmoenn4.us-east-1.rds.amazonaws.com",
+               pg_port = "5432", pg_user = "demo", pg_password = "demo", pg_database = "demo",
+               pg_query = "SELECT petal_length, petal_width, sepal_length, sepal_width FROM iris;" }
+             | predict
+             | Sinks.log<PlantSpecies>

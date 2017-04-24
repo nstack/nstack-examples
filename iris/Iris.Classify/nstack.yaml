@@ -7,11 +7,6 @@ stack: Python
 # Parent Image
 parent: NStack.Python:0.25.0
 
-api: |
-  type PlantInfo = (Double, Double, Double, Double)
-  type PlantSpecies = Text
-  predict : PlantInfo -> PlantSpecies
-
 # (Optional) System-level packages needed
 # packages: ['python3-devel', 'make', 'automake', 'gcc-gfortran', 'redhat-rpm-config', 'subversion', 'gcc', 'gcc-c++', 'python-devel', 'scipy']
 packages: ['python3-numpy', 'python3-scikit-learn', 'python3-scipy', 'python3-scikit-image', 'python3-pandas']

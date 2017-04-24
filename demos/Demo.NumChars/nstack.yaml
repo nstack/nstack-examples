@@ -1,14 +1,8 @@
-# Module name (must be capitalised)
-name: Demo.NumChars:0.0.1
-
 # The language stack to use
 stack: Python
 
 # Parent Image
 parent: NStack.Python:0.25.0
-
-api: |
-  numChars : Text -> Integer
 
 # (Optional) System-level packages needed
 packages: []

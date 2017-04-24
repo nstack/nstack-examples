@@ -1,30 +1,31 @@
-module Movies.Workflows:0.1.2 {
-  import Movies.GetIMDBScore:0.1.1 as GetIMDBScore;
-  import Movies.FilterHighScores:0.1.0 as FilterHighScores;
-  import Movies.GetMoviePoster:0.1.1 as GetMoviePoster;
-  import NStack.ImageProcess:0.1.0 as Image;
-  import NStack.Utils:0.1.0 as Utils;
+module Movies.Workflows:0.1.0
 
-  // Movie workflow - get and filter top movies (according to IMDB) and apply an image filter to the movie poster
-  def moviePosters = GetIMDBScore.getIMDBScore
-                     | FilterHighScores.filterHighScores { score = "7.5" } * 
-                     | GetMoviePoster.getMoviePoster *
-                     | Image.applyFilter { filtertype = "random" };
+import Movies.Types:0.1.0 as Types
+import Movies.GetIMDBScore:0.1.0 as GetIMDBScore
+import Movies.FilterHighScores:0.1.0 as FilterHighScores
+import Movies.GetMoviePoster:0.1.0 as GetMoviePoster
+import NStack.ImageProcess:0.1.0 as Image
+import NStack.Utils:0.1.0 as Utils
 
-  // A workflow exposing the moviePosters pipeline over http and saves the result to S3
-  def fromHttp = Sources.http<Text> { http_path = "movies" } 
-                    | moviePosters 
-                    | Utils.uploadS3File { directory = "http_movies" }
-                    | Sinks.log<Text>;
-  
-  // A workflow that runs the moviePosters pipeline against a random selection of movies from a database source and saves the result to S3
-  def fromDb = Sources.postgresql<(Text, Text)>
-                  { pg_host = "db-demo-nstack-com.cesfchmoenn4.us-east-1.rds.amazonaws.com", 
-                    pg_port = "5432", pg_user = "demo", pg_password = "demo", pg_database = "demo",
-                    pg_query = "SELECT title, title FROM film ORDER BY RANDOM() LIMIT 15;" }
-                  | Utils.fst
+// Movie workflow - get and filter top movies (according to IMDB) and apply an image filter to the movie poster
+def moviePosters = GetIMDBScore.getIMDBScore
+                   | FilterHighScores.filterHighScores { score = "7.5" } *
+                   | GetMoviePoster.getMoviePoster *
+                   | Image.applyFilter { filtertype = "random" }
+
+// A workflow exposing the moviePosters pipeline over http and saving the result to S3
+def fromHttp = Sources.http<Types.Title> { http_path = "movies" }
                   | moviePosters
-                  | Utils.uploadS3File { directory = "db_movies" }
-                  | Sinks.log<Text>;
-}
+                  | Utils.uploadS3File { directory = "http_movies" }
+                  | Sinks.log<Text>
 
+// A workflow that runs the moviePosters pipeline against a random selection of movies from a database source and saves the result to S3
+def fromDb = Sources.postgresql<(Types.Title, Types.Title)>
+                { pg_host = "db-demo-nstack-com.cesfchmoenn4.us-east-1.rds.amazonaws.com",
+                  pg_port = "5432", pg_user = "demo", pg_password = "demo", pg_database = "demo",
+                  pg_query = "SELECT title, title FROM film ORDER BY RANDOM() LIMIT 15;" }
+                // the Postgres source only supports tuples at the moment
+                | Utils.fst
+                | moviePosters
+                | Utils.uploadS3File { directory = "db_movies" }
+                | Sinks.log<Text>

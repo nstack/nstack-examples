@@ -1,0 +1,5 @@
+module Movies.GetIMDBScore:0.1.0
+
+import Movies.Types:0.1.0 as Types
+
+fun getIMDBScore : Types.Title -> Types.MovieRecord
