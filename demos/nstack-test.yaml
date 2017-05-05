@@ -1,0 +1,63 @@
+- name: demo_classify
+  config:
+    module_dirs:
+      - Demo.Classify
+    notebook: | 
+      import Demo.Classify:0.0.3 as D
+      Sources.http<Text> { http_path = "/classify" } | D.classify | Sinks.log<Text>
+  test:
+    - cmd: send
+      endpoint: /classify
+      data: orange
+    - cmd: log
+      expect: \"orange is a fruit\"
+
+- name: demo_firstlastname
+  config:
+    module_dirs:
+      - Demo.FirstLastName
+    notebook: | 
+      import Demo.FirstLastName:0.0.1 as FLN
+      Sources.http<Text> { http_path = "/fln" } | FLN.full_name { first_name = "John" } | Sinks.log<Text>
+  test:
+    - cmd: send
+      endpoint: /fln
+      data: Nash
+    - cmd: log
+      expect: \"John Nash\"
+
+- name: demo_numchars_workflow
+  config:
+    module_dirs:
+      - Demo.NumChars
+      - Demo.DigitString
+      - Demo.Workflow
+    start: ["Demo.Workflow:0.0.1-SNAPSHOT", w]
+  test:
+    - cmd: send
+      endpoint: /demo
+      data: HelloWorld
+    - cmd: log
+      expect: \d+
+
+
+- name: demo_digitstring_workflow
+  config:
+    module_dirs:
+      - Demo.NumChars
+      - Demo.DigitString
+      - Demo.Workflow
+    start: ["Demo.Workflow:0.0.1-SNAPSHOT", digits]
+  test:
+    - cmd: send
+      endpoint: /digit_string
+      data: [1,2,3,4]
+    - { cmd: sleep, secs: 7 }
+    - { cmd: log, expect: \"1\"}
+    - { cmd: sleep, secs: 7 }
+    - { cmd: log, expect: \"2\"}
+    - { cmd: sleep, secs: 7 }
+    - { cmd: log, expect: \"3\"}
+    - { cmd: sleep, secs: 7 }
+    - { cmd: log, expect: \"4\"}
+
