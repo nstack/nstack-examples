@@ -1,0 +1,3 @@
+module Demo.Retry:0.0.1-SNAPSHOT
+
+fun faulty_id : Text -> Text

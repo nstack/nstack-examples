@@ -1,0 +1,5 @@
+module Demo.Json:0.0.1-SNAPSHOT
+
+fun extract_field : (Text, Json) -> Text
+
+def extract_field_wf = Sources.http<(Text, Json)> { http_path="/extract_field" } | extract_field | Sinks.log<Text>

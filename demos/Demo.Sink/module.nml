@@ -1,0 +1,5 @@
+module Demo.Sink:0.0.1-SNAPSHOT
+
+fun mylog : Text -> Void
+
+def mylog_wf = Sources.http<Text> { http_path = "/log" } | mylog

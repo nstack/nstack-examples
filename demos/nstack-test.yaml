@@ -2,7 +2,7 @@
   config:
     module_dirs:
       - Demo.Classify
-    notebook: | 
+    notebook: |
       import Demo.Classify:0.0.3 as D
       Sources.http<Text> { http_path = "/classify" } | D.classify | Sinks.log<Text>
   test:
@@ -16,7 +16,7 @@
   config:
     module_dirs:
       - Demo.FirstLastName
-    notebook: | 
+    notebook: |
       import Demo.FirstLastName:0.0.1 as FLN
       Sources.http<Text> { http_path = "/fln" } | FLN.full_name { first_name = "John" } | Sinks.log<Text>
   test:
@@ -61,3 +61,52 @@
     - { cmd: sleep, secs: 7 }
     - { cmd: log, expect: \"4\"}
 
+- name: demo_sink
+  config:
+    module_dirs:
+      - Demo.Sink
+    start: ["Demo.Sink:0.0.1-SNAPSHOT", mylog_wf]
+  test:
+    - cmd: send
+      endpoint: /log
+      data: a4Ui3Omb7M4XmYt9
+    #- cmd: log
+    #- expect: a4Ui3Omb7M4XmYt9
+
+- name: demo_json
+  config:
+    module_dirs:
+      - Demo.Json
+    start: ["Demo.Json:0.0.1-SNAPSHOT", extract_field_wf]
+  test:
+    - cmd: send
+      endpoint: /extract_field
+      data: ["f1",{"f1":"O7r3wVo5BDqKkQie","f2":"Z3mhl9kZmD16hWkF"}]
+    - cmd: log
+      expect: \"O7r3wVo5BDqKkQie\"
+
+- name: demo_retry
+  config:
+    module_dirs:
+      - Demo.Retry
+    notebook: |
+      import Demo.Retry:0.0.1-SNAPSHOT as R
+      Sources.http<Text> { http_path = "/reliable_id" } | R.faulty_id { retry = "true" } | Sinks.log<Text>
+  test:
+    - cmd: send
+      endpoint: /reliable_id
+      data: CmnSX2WLRnY4EXVZ
+    - cmd: log
+      expect: \"CmnSX2WLRnY4EXVZ\"
+
+- name: demo_tsv
+  config:
+    module_dirs: []
+    notebook: |
+      Sources.http<Text> { http_path = "/tsv" } | Conv.from_csv<[Integer]> {csv_sep="\t"} | Conv.to_csv<[Integer]> {csv_sep="!"} | Sinks.log<Text>
+  test:
+    - cmd: send
+      endpoint: /tsv
+      data: "1\t2\t42"
+    - cmd: log
+      expect: \"1!2!42\"

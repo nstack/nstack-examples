@@ -5,4 +5,6 @@ modules:
   - Demo.Workflow
   - Demo.Classify
   - Demo.FirstLastName
-
+  - Demo.Sink
+  - Demo.Json
+  - Demo.Retry
