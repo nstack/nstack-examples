@@ -1,0 +1,12 @@
+module_dirs:
+  - Iris.Classify
+tests:
+- name: iris
+  start: ["Iris.Classify:0.1.0", fromHttp]
+  cmds:
+    - cmd: send
+      endpoint: /iris
+      data: [5.2, 2.3, 6.7, 3]
+    - cmd: log
+      regex: \"Iris-virginica\"
+

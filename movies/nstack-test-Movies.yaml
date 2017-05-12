@@ -1,0 +1,24 @@
+module_dirs: []
+tests: []
+# Waiting on few PRs to fix
+#module_dirs:
+#  - ../nstack/NStack.ImageProcess
+#  - ../nstack/NStack.Utils
+#  - Movies.Types
+#  - Movies.GetIMDBScore
+#  - Movies.FilterHighScores
+#  - Movies.GetMoviePoster
+#  - Movies.Workflows
+
+#tests:
+#  - name: toy_story
+#    notebook: |
+#      import Movies.Workflows:0.1.0 as Movies
+#      Sources.http<Text> { http_path = "/movies" } | Movies.moviePosters | Sinks.log<{title: Text, data: [Byte]}>
+#    cmds:
+#      - cmd: send
+#        endpoint: /movies
+#        data: Toy Story
+#      - cmd: log
+#        regex: \"Toy Story.jpg\"
+

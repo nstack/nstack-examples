@@ -1,0 +1,44 @@
+module_dirs:
+  - Demo.Sink
+  - Demo.Json
+  - Demo.Retry
+
+tests:
+  - name: demo_sink
+    start: ["Demo.Sink:0.0.1-SNAPSHOT", mylog_wf]
+    cmds:
+      - cmd: send
+        endpoint: /log
+        data: a4Ui3Omb7M4XmYt9
+      #- cmd: log
+      #- regex: a4Ui3Omb7M4XmYt9
+
+  - name: demo_json
+    start: ["Demo.Json:0.0.1-SNAPSHOT", extract_field_wf]
+    cmds:
+      - cmd: send
+        endpoint: /extract_field
+        data: ["f1",{"f1":"O7r3wVo5BDqKkQie","f2":"Z3mhl9kZmD16hWkF"}]
+      - cmd: log
+        regex: \"O7r3wVo5BDqKkQie\"
+
+  - name: demo_retry
+    notebook: |
+      import Demo.Retry:0.0.1-SNAPSHOT as R
+      Sources.http<Text> { http_path = "/reliable_id" } | R.faulty_id { retry = "true" } | Sinks.log<Text>
+    cmds:
+      - cmd: send
+        endpoint: /reliable_id
+        data: CmnSX2WLRnY4EXVZ
+      - cmd: log
+        regex: \"CmnSX2WLRnY4EXVZ\"
+
+  - name: demo_tsv
+    notebook: |
+      Sources.http<Text> { http_path = "/tsv" } | Conv.from_csv<[Integer]> {csv_sep="\t"} | Conv.to_csv<[Integer]> {csv_sep="!"} | Sinks.log<Text>
+    cmds:
+      - cmd: send
+        endpoint: /tsv
+        data: "1\t2\t42"
+      - cmd: log
+        regex: \"1!2!42\"

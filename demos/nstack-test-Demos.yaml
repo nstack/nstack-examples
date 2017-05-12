@@ -1,0 +1,54 @@
+module_dirs:
+  - Demo.Classify
+  - Demo.FirstLastName
+  - Demo.NumChars
+  - Demo.DigitString
+  - Demo.Workflow
+
+tests:
+  - name: demo_classify
+    notebook: | 
+      import Demo.Classify:0.0.3 as D
+      Sources.http<Text> { http_path = "/classify" } | D.classify | Sinks.log<Text>
+    cmds:
+      - cmd: send
+        endpoint: /classify
+        data: orange
+      - cmd: log
+        regex: \"orange is a fruit\"
+
+  - name: demo_firstlastname
+    notebook: | 
+      import Demo.FirstLastName:0.0.1 as FLN
+      Sources.http<Text> { http_path = "/fln" } | FLN.full_name { first_name = "John" } | Sinks.log<Text>
+    cmds:
+      - cmd: send
+        endpoint: /fln
+        data: Nash
+      - cmd: log
+        regex: \"John Nash\"
+
+  - name: demo_numchars_workflow
+    start: ["Demo.Workflow:0.0.1-SNAPSHOT", w]
+    cmds:
+      - cmd: send
+        endpoint: /demo
+        data: HelloWorld
+      - cmd: log
+        regex: \d+
+
+  - name: demo_digitstring_workflow
+    start: ["Demo.Workflow:0.0.1-SNAPSHOT", digits]
+    cmds:
+      - cmd: send
+        endpoint: /digit_string
+        data: [1,2,3,4]
+      - { cmd: sleep, secs: 6 }
+      - { cmd: log, regex: \"1\"}
+      - { cmd: sleep, secs: 6 }
+      - { cmd: log, regex: \"2\"}
+      - { cmd: sleep, secs: 6 }
+      - { cmd: log, regex: \"3\"}
+      - { cmd: sleep, secs: 6 }
+      - { cmd: log, regex: \"4\"}
+
