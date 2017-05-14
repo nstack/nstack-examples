@@ -19,6 +19,6 @@ tests: []
 #      - cmd: send
 #        endpoint: /movies
 #        data: Toy Story
-#      - cmd: log
+#      - cmd: log_sink
 #        regex: \"Toy Story.jpg\"
 

@@ -10,7 +10,7 @@ tests:
       - cmd: send
         endpoint: /log
         data: a4Ui3Omb7M4XmYt9
-      #- cmd: log
+      #- cmd: log_sink
       #- regex: a4Ui3Omb7M4XmYt9
 
   - name: demo_json
@@ -19,7 +19,7 @@ tests:
       - cmd: send
         endpoint: /extract_field
         data: ["f1",{"f1":"O7r3wVo5BDqKkQie","f2":"Z3mhl9kZmD16hWkF"}]
-      - cmd: log
+      - cmd: log_sink
         regex: \"O7r3wVo5BDqKkQie\"
 
   - name: demo_retry
@@ -30,7 +30,7 @@ tests:
       - cmd: send
         endpoint: /reliable_id
         data: CmnSX2WLRnY4EXVZ
-      - cmd: log
+      - cmd: log_sink
         regex: \"CmnSX2WLRnY4EXVZ\"
 
   - name: demo_tsv
@@ -40,5 +40,5 @@ tests:
       - cmd: send
         endpoint: /tsv
         data: "1\t2\t42"
-      - cmd: log
+      - cmd: log_sink
         regex: \"1!2!42\"

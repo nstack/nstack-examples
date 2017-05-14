@@ -7,6 +7,6 @@ tests:
     - cmd: send
       endpoint: /iris
       data: [5.2, 2.3, 6.7, 3]
-    - cmd: log
+    - cmd: log_sink
       regex: \"Iris-virginica\"
 
