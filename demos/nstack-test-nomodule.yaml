@@ -1,0 +1,13 @@
+# Tests that require no modules to be built and are therefore fast to run
+module_dirs: []
+
+tests:
+  - name: demo_tsv
+    notebook: |
+      Sources.http<Text> { http_path = "/tsv" } | Conv.from_csv<[Integer]> {csv_sep="\t"} | Conv.to_csv<[Integer]> {csv_sep="!"} | Sinks.log<Text>
+    cmds:
+      - cmd: send
+        endpoint: /tsv
+        data: "1\t2\t42"
+      - cmd: log_sink
+        regex: \"1!2!42\"
