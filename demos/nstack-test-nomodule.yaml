@@ -11,3 +11,26 @@ tests:
         data: "1\t2\t42"
       - cmd: log_sink
         regex: \"1!2!42\"
+
+  - name: from_tsv_file
+    notebook: |
+      Sources.http<Text> { http_path = "/tsv" } | Conv.from_csv<[[Integer]]> {csv_sep="\t"} | Conv.to_json<[[Integer]]> | Sinks.log<Text>
+    cmds:
+      - cmd: send
+        endpoint: /tsv
+        data: "1\t2\t42\n3\t4\t15\n"
+      - cmd: log_sink
+        regex: |
+          "\[\[1,2,42\],\[3,4,15\]\]"\s*
+
+  - name: to_csv_file
+    notebook: |
+      Sources.http<[{a:Integer,b:Boolean}]> { http_path = "/tsv" } | Conv.to_csv<[{a:Integer,b:Boolean}]> | Sinks.log<Text>
+    cmds:
+      - cmd: send
+        endpoint: /tsv
+        data:
+          [{"b":false, "a":1}, {"a":-1,"b":true}]
+      - cmd: log_sink
+        regex: |
+          "a,b\\r\\n1,FALSE\\r\\n-1,TRUE\\r\\n"\s*
