@@ -28,10 +28,7 @@ class Service(nstack.BaseService):
         if movie_title.poster_url is not None:
           # download the poster into a bytearray
           r = requests.get(movie_title.poster_url)
-
-          # filter content greater than MAX_SIZE_KB
-          if len(r.content) <= MAX_SIZE_KB * 1000:
-            return [('{}.jpg'.format(title), r.content)]
+          return [('{}.jpg'.format(title), r.content)]
 
         return []
 

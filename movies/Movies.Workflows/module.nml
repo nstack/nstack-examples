@@ -1,9 +1,9 @@
-module Movies.Workflows:0.1.0
+module Movies.Workflows:0.1.1
 
 import Movies.Types:0.1.0 as Types
 import Movies.GetIMDBScore:0.1.0 as GetIMDBScore
 import Movies.FilterHighScores:0.1.0 as FilterHighScores
-import Movies.GetMoviePoster:0.1.0 as GetMoviePoster
+import Movies.GetMoviePoster:0.1.1 as GetMoviePoster
 import NStack.ImageProcess:0.1.0 as Image
 import NStack.Utils:0.1.0 as Utils
 
