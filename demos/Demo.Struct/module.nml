@@ -1,0 +1,12 @@
+// Test structural typing
+// see https://github.com/nstack/nstack-server/issues/571
+module Demo.Struct:0.0.1-SNAPSHOT
+
+type V1 = A Integer
+        | B { b1 : Integer, b2 : Text, b3 : Boolean }
+type V2 = B { b3 : Boolean, b2 : Text, b1 : Integer }
+        | A Integer
+
+fun test0 : V1 -> Integer
+
+def test1 = Conv.from_json<V2> | test0
