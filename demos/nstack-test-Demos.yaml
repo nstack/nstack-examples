@@ -4,6 +4,7 @@ module_dirs:
   - Demo.NumChars
   - Demo.DigitString
   - Demo.Workflow
+  - Demo.Struct
 
 tests:
   - name: demo_classify
