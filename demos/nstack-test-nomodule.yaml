@@ -33,4 +33,4 @@ tests:
           [{"b":false, "a":1}, {"a":-1,"b":true}]
       - cmd: log_sink
         regex: |
-          "a,b\\r\\n1,FALSE\\r\\n-1,TRUE\\r\\n"\s*
+          "b,a\\r\\nFALSE,1\\r\\nTRUE,-1\\r\\n"\s*
