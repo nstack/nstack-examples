@@ -5,7 +5,7 @@ module_dirs:
   - Movies.GetIMDBScore
   - Movies.FilterHighScores
   - Movies.GetMoviePoster
-#  - Movies.Workflows
+  - Movies.Workflows
 
 tests:
   - name: dummy
