@@ -1,8 +1,8 @@
 # The language stack to use
-stack: Python
-
-# Parent Image
-parent: NStack.Python:0.25.0
+stack: 
+  language: Python
+  api-version: 1
+  snapshot: [25, 0]
 
 # (Optional) System-level packages needed
 packages: []
