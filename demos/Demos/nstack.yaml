@@ -1,0 +1,15 @@
+# The language stack to use
+stack: 
+  language: Python
+  api-version: 1
+  snapshot: [25, 0]
+
+# (Optional) System-level packages needed
+packages: []
+
+# (Optional) Commands to run when building the service (Bash-compatible)
+commands: []
+
+# (Optional) Files/Dir to copy across into the service (can use regex/glob syntax)
+files: []
+
