@@ -19,7 +19,7 @@ def class_of(s):
 
 class Service(nstack.BaseService):
     def __init__(self):
-        super.__init__()
+        super().__init__()
         # Demo.Retry
         self.fail = True
 
