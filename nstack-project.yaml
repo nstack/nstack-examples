@@ -1,6 +1,7 @@
 # NStack Examples Project File
 modules:
   # demos
+  - demos/Demos
   - demos/Demo.NumChars
   - demos/Demo.DigitString
   - demos/Demo.Workflow
