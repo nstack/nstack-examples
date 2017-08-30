@@ -1,11 +1,8 @@
-# Service name (a combination of lower case letters, numbers, and dashes)
-name: Iris.Classify:0.1.0
-
 # The language stack to use
-stack: Python
-
-# Parent Image
-parent: NStack.Python:0.25.0
+stack: 
+  language: Python
+  api-version: 1
+  snapshot: [25, 0]
 
 # (Optional) System-level packages needed
 packages: ['python3-numpy', 'python3-scikit-learn', 'python3-scipy', 'python3-pandas']

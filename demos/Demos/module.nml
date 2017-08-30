@@ -1,0 +1,29 @@
+module Demos:0.0.1
+
+// Demo.NumChars
+fun numChars : Text -> Integer
+
+// Demo.Classify
+fun classify : Text -> Text
+
+// Demo.DigitString
+fun digitString : [Integer] -> Text
+
+// Demo.FirstLastName
+fun full_name : Text -> Text
+
+// Demo.Json
+fun extract_field : (Text, Json) -> Text
+
+// Demo.Retry
+fun faulty_id : Text -> Text
+
+// Demo.Sink
+fun mylog : Text -> Void
+
+// Demo.Json defs
+def extract_field_wf = Sources.http<(Text, Json)> { http_path="/extract_field" } | extract_field | Sinks.log<Text>
+
+// Demo.Sink defs
+def mylog_wf = Sources.http<Text> { http_path = "/log" } | mylog
+
