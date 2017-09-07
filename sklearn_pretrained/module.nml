@@ -1,0 +1,7 @@
+module Propensity:0.0.1-SNAPSHOT
+
+type FeatureVector = [Double]
+
+fun get_propensity : FeatureVector -> Double
+
+def w = Sources.http<FeatureVector> { http_path = "/get_propensity" } | get_propensity | Sinks.log<Double>
