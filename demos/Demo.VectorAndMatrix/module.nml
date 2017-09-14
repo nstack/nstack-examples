@@ -1,0 +1,13 @@
+module Demo.VectorAndMatrix:0.0.1-SNAPSHOT
+
+fun matrixTo2 : Matrix 2 3 Text -> Integer
+fun vectorTo5 : Vector 5 Text -> Integer
+
+def matrixSource = Sources.http<Matrix 2 3 Text> { http_path = "/matrix_source" }
+def vectorSource = Sources.http<Vector 5 Text> { http_path = "/vector_source" }
+
+def intSink = Sinks.log<Integer>
+
+def matrixWf = matrixSource | matrixTo2 | intSink
+def vectorWf = vectorSource | vectorTo5 | intSink
+

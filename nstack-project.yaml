@@ -6,6 +6,7 @@ modules:
   - demos/Demo.DigitString
   - demos/Demo.Workflow
   - demos/Demo.Classify
+  - demos/Demo.VectorAndMatrix
   - demos/Demo.FirstLastName
   - demos/Demo.Sink
   - demos/Demo.Json
