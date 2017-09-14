@@ -1,0 +1,7 @@
+module Propensity:0.0.1-SNAPSHOT
+
+type MLInput = [Double]
+
+fun process : MLInput -> [Double]
+
+def w = Sources.http<MLInput> { http_path = "/process" } | process | Sinks.log<[Double]>
