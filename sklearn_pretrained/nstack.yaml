@@ -1,8 +1,10 @@
 # The language stack to use
-stack: Python
-
-# Parent Image
-parent: nstack/NStack.Python:0.25.0
+stack:
+  snapshot:
+  - 25
+  - 0
+  api-version: 1
+  language: python
 
 # (Optional) System-level packages needed
 packages: [libstdc++]

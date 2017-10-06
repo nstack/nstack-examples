@@ -62,10 +62,10 @@ df_clickstreams = clicks[clicks.index.get_level_values(0).isin(sessions_viewed_i
 
 df_purchases = clicks[clicks.index.get_level_values(0).isin(sessions_bought_iid)]
 
-# We select the 30 most viewed items to be used as features for our model:
-# If the session contains a view of that item, the feature will be set to
-# 1.0, otherwise 0.0 .
-num_features = 30
+# We select the `num_features` most viewed items to be used as features
+# for our model: If the session contains a view of that item, the feature
+# will be set to 1.0, otherwise 0.0 .
+num_features = 4
 item_ids_features = list(df_purchases.groupby('item_id').size().sort_values(ascending=False).index[:num_features])
 
 # Now, for each item_ids_features, and for each session in df_clickstreams,
