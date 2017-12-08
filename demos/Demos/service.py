@@ -17,7 +17,7 @@ def class_of(s):
     if s in chaps:
         return "chap"
 
-class Service(nstack.BaseService):
+class Module(nstack.Module):
     def __init__(self):
         super().__init__()
         # Demo.Retry

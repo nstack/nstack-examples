@@ -3,7 +3,7 @@ stack:
   snapshot:
   - 25
   - 0
-  api-version: 1
+  api-version: 2
   language: python
 
 # (Optional) System-level packages needed

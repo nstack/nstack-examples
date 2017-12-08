@@ -12,7 +12,7 @@ import nstack
 
 MAX_SIZE_KB = 512 # Max size of a poster to return
 
-class Service(nstack.BaseService):
+class Module(nstack.Module):
     def __init__(self):
         self.imdb = Imdb()
         # self.imdb = Imdb(anonymize=True) # to proxy requests

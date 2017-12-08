@@ -4,7 +4,7 @@ Demo.VectorAndMatrix:0.0.1-SNAPSHOT Service
 """
 import nstack
 
-class Service(nstack.BaseService):
+class Module(nstack.Module):
     def matrixTo2(self, x):
         return len(x)
 

@@ -6,7 +6,7 @@ Demo.DigitString:0.0.1-SNAPSHOT Service
 import nstack
 import time
 
-class Service(nstack.BaseService):
+class Module(nstack.Module):
     def digitString (self, xs):
         return (self.transform(x) for x in xs)
     

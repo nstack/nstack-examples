@@ -7,7 +7,7 @@ from imdbpie import Imdb
 
 import nstack
 
-class Service(nstack.BaseService):
+class Module(nstack.Module):
     def __init__(self):
         self.imdb = Imdb()
         # self.imdb = Imdb(anonymize=True) # to proxy requests

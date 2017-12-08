@@ -1,7 +1,7 @@
 # The language stack to use
 stack: 
   language: Python
-  api-version: 1
+  api-version: 2
   snapshot: [25, 0]
 
 # (Optional) System-level packages needed
