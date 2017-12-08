@@ -67,14 +67,3 @@ tests:
       - cmd: log_sink
         regex: \"O7r3wVo5BDqKkQie\"
 
-  - name: demo_retry
-    notebook: |
-      import Demos:0.0.1 as R
-      Sources.http<Text> { http_path = "/reliable_id" } | R.faulty_id { retry = "true" } | Sinks.log<Text>
-    cmds:
-      - cmd: send
-        endpoint: /reliable_id
-        data: CmnSX2WLRnY4EXVZ
-      - cmd: log_sink
-        regex: \"CmnSX2WLRnY4EXVZ\"
-
