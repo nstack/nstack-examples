@@ -71,6 +71,7 @@ tests:
     notebook: |
       import Demos:0.0.1 as R
       Sources.http<Text> { http_path = "/reliable_id" } | R.faulty_id { retry = "true" } | Sinks.log<Text>
+    type: failure
     cmds:
       - cmd: send
         endpoint: /reliable_id

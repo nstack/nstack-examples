@@ -5,7 +5,7 @@ Demo.Retry:0.0.1-SNAPSHOT Service
 """
 import nstack
 
-class Service(nstack.BaseService):
+class Module(nstack.Module):
     def __init__(self):
         self.fail = True
 

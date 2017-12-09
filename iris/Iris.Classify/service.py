@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 import nstack
 
-class Service(nstack.BaseService):
+class Module(nstack.Module):
     def __init__(self):
         """Initialise and train the classifier"""
         super().__init__()

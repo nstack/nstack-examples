@@ -14,7 +14,7 @@ def class_of(s):
     if s in chaps:
         return "chap"
 
-class Service(nstack.BaseService):
+class Module(nstack.Module):
     def classify(self, x):
         return "{} is a {}".format(x, class_of(x.lower()))
 

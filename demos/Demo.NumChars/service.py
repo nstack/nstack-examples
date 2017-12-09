@@ -5,7 +5,7 @@ Demo.NumChars:0.0.1 Service
 """
 import nstack
 
-class Service(nstack.BaseService):
+class Module(nstack.Module):
     def numChars(self, msg):
         return len(msg)
 

@@ -1,8 +1,10 @@
-# The language stack to use
-stack: 
-  language: Python
+# The language stack or parent image to use
+stack:
+  snapshot:
+  - 25
+  - 0
   api-version: 2
-  snapshot: [25, 0]
+  language: python
 
 # (Optional) System-level packages needed
 packages: []

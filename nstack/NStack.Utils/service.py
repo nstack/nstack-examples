@@ -12,7 +12,7 @@ import boto3
 
 import nstack
 
-class Service(nstack.BaseService):
+class Module(nstack.Module):
   def __init__(self):
     # make sure call the superclass to initialise correctly
     super().__init__()

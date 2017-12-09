@@ -5,6 +5,6 @@ Demo.Sink:0.0.1-SNAPSHOT Service
 """
 import nstack
 
-class Service(nstack.BaseService):
+class Module(nstack.Module):
     def mylog(self, x):
         print(x)

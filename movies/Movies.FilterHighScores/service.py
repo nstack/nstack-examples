@@ -5,7 +5,7 @@ Movies.FilterHighScores Service
 """
 import nstack
 
-class Service(nstack.BaseService):
+class Module(nstack.Module):
     # (Title, Score) -> [(Title, Score)]
     def filterHighScores(self, msg):
         (title, score) = msg
