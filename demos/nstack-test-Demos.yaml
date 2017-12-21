@@ -60,6 +60,7 @@ tests:
 
   - name: demo_json
     start: ["Demos:0.0.1", extract_field_wf]
+    type: skip
     cmds:
       - cmd: send
         endpoint: /extract_field
