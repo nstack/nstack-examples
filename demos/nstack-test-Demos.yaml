@@ -27,6 +27,7 @@ tests:
 
   - name: demo_numchars_workflow
     start: ["Demo.Workflow:0.0.1-SNAPSHOT", w]
+    type: skip
     cmds:
       - cmd: send
         endpoint: /demo
@@ -51,6 +52,7 @@ tests:
 
   - name: demo_sink
     start: ["Demos:0.0.1", mylog_wf]
+    type: skip
     cmds:
       - cmd: send
         endpoint: /log
