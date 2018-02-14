@@ -34,3 +34,9 @@ tests:
       - cmd: log_sink
         regex: |
           "a,b\\r\\n1,FALSE\\r\\n-1,TRUE\\r\\n"\s*
+
+  - name: builtin_services
+    notebook: |
+      import BuiltinServices:0.0.1-SNAPSHOT as N
+      N.http{http_path="/log"} | N.log<(Double,{romeo:Integer,juliet:Boolean})>
+    cmds: []
