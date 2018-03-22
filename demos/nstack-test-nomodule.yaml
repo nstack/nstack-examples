@@ -4,7 +4,8 @@ module_dirs: []
 tests:
   - name: demo_tsv
     notebook: |
-      Sources.http<Text> { http_path = "/tsv" } | Conv.from_csv<[Integer]> {csv_sep="\t"} | Conv.to_csv<[Integer]> {csv_sep="!"} | Sinks.log<Text>
+      import BuiltinServices:0.0.1-SNAPSHOT as N
+      Sources.http<Text> { http_path = "/tsv" } | N.from_csv<[Integer]> {csv_sep="\t"} | N.to_csv<[Integer]> {csv_sep="!"} | N.log<Text>
     cmds:
       - cmd: send
         endpoint: /tsv
@@ -14,7 +15,8 @@ tests:
 
   - name: from_tsv_file
     notebook: |
-      Sources.http<Text> { http_path = "/tsv" } | Conv.from_csv<[[Integer]]> {csv_sep="\t"} | Conv.to_json<[[Integer]]> | Sinks.log<Text>
+      import BuiltinServices:0.0.1-SNAPSHOT as N
+      Sources.http<Text> { http_path = "/tsv" } | N.from_csv<[[Integer]]> {csv_sep="\t"} | N.to_json<[[Integer]]> | N.log<Text>
     cmds:
       - cmd: send
         endpoint: /tsv
@@ -25,7 +27,8 @@ tests:
 
   - name: to_csv_file
     notebook: |
-      Sources.http<[{a:Integer,b:Boolean}]> { http_path = "/tsv" } | Conv.to_csv<[{a:Integer,b:Boolean}]> | Sinks.log<Text>
+      import BuiltinServices:0.0.1-SNAPSHOT as N
+      Sources.http<[{a:Integer,b:Boolean}]> { http_path = "/tsv" } | N.to_csv<[{a:Integer,b:Boolean}]> | N.log<Text>
     cmds:
       - cmd: send
         endpoint: /tsv
