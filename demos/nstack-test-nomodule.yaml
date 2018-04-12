@@ -10,6 +10,7 @@ tests:
       - cmd: send
         endpoint: /tsv
         data: "1\t2\t42"
+      - { cmd: sleep, secs: 2 }
       - cmd: log_sink
         regex: \"1!2!42\"
 
@@ -21,6 +22,7 @@ tests:
       - cmd: send
         endpoint: /tsv
         data: "1\t2\t42\n3\t4\t15\n"
+      - { cmd: sleep, secs: 2 }
       - cmd: log_sink
         regex: |
           "\[\[1,2,42\],\[3,4,15\]\]"\s*
@@ -34,6 +36,7 @@ tests:
         endpoint: /tsv
         data:
           [{"b":false, "a":1}, {"a":-1,"b":true}]
+      - { cmd: sleep, secs: 2 }
       - cmd: log_sink
         regex: |
           "a,b\\r\\n1,FALSE\\r\\n-1,TRUE\\r\\n"\s*
