@@ -36,10 +36,9 @@ tests:
         endpoint: /tsv
         data:
           [{"b":false, "a":1}, {"a":-1,"b":true}]
-      - { cmd: sleep, secs: 2 }
+      - { cmd: sleep, secs: 5 }
       - cmd: log_sink
-        regex: |
-          "a,b\\r\\n1,FALSE\\r\\n-1,TRUE\\r\\n"\s*
+        regex: "\"a,b\\s*\n1,FALSE\\s*\n-1,TRUE\\s*\n\""
 
   - name: builtin_services
     notebook: |
